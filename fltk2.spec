@@ -1,14 +1,11 @@
-# has major internal linking issues - AdamW 2008/12
-%define _disable_ld_no_undefined	1
-
 %define major		2
 %define libname		%mklibname %{fname} %{major}
 %define develname	%mklibname %{fname} %{major} -d
 
 %define fname	fltk
 %define fver	2.0.x
-%define svn	6525
-%define rel	3
+%define svn	7725
+%define rel	1
 
 %if %svn
 %define release		%mkrel 0.%{svn}.%{rel}
@@ -27,18 +24,21 @@ Group:		System/Libraries
 Summary:	Fast Light Tool Kit (FLTK) version 2
 License:	LGPLv2+ with exceptions
 Source0:	http://ftp.easysw.com/pub/fltk/snapshots/%{distname}
-# Tries to run fltk2-config as simply bindir/fltk2-config: patch makes
-# it run as destdir/bindir/fltk2-config - AdamW 2008/12
-Patch0:		fltk2-6525-fluid_config_run.patch
 # Fix underlinking - AdamW 2008/12
 Patch1:		fltk2-6525-underlink.patch
 URL:		http://www.fltk.org
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	X11-devel
+BuildRequires:	libx11-devel
+BuildRequires:	libxext-devel
+BuildRequires:	libxft-devel
+BuildRequires:	libxi-devel
+BuildRequires:	libxrender-devel
+BuildRequires:	libxinerama-devel
+BuildRequires:	freetype2-devel
 BuildRequires:	jpeg-devel
 BuildRequires:	png-devel
 BuildRequires:	zlib-devel
-BuildRequires:	mesaglu-devel
+BuildRequires:	mesaglut-devel
 BuildRequires:	GL-devel
 BuildRequires:	makedepend
 BuildRequires:	man
@@ -66,7 +66,7 @@ repository in the US.
 %package -n %{develname}
 Summary:	Fast Light Tool Kit (FLTK) - development environment
 Group:		Development/C
-Requires:	%{libname} = %{version}
+Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{develname}
@@ -79,8 +79,7 @@ repository in the US. This package contains development libraries
 and headers.
 
 %prep
-%setup -q -n %{dirname}
-%patch0 -p1 -b .config
+%setup -qn %{fname}-%{fver}-r%{svn}
 %patch1 -p1 -b .underlink
 
 %build
