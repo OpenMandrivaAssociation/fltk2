@@ -4,7 +4,7 @@
 
 %define fname	fltk
 %define fver	2.0.x
-%define svn	7725
+%define svn	8323
 %define rel	1
 
 %if %svn
