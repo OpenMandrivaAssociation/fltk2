@@ -5,7 +5,7 @@
 %define fname	fltk
 %define fver	2.0.x
 %define svn	8323
-%define rel	1
+%define rel	2
 
 %if %svn
 %define release		%mkrel 0.%{svn}.%{rel}
