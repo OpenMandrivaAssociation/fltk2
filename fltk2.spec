@@ -3,8 +3,8 @@
 %define develname	%mklibname %{fname} %{major} -d
 
 %define fname	fltk
-%define fver	2.0.x
-%define svn	8518
+%define fver	2.0.x-alpha
+%define svn	8695
 %define rel	1
 
 %if %svn
