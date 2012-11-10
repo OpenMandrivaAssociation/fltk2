@@ -1,0 +1,44 @@
+--- fltk-2.0.x-r6525/src/Makefile	2008-08-04 16:03:58.000000000 -0700
++++ fltk-2.0.x-r6525/src/Makefile.new	2008-12-09 12:28:52.000000000 -0800
+@@ -235,7 +235,7 @@
+ 
+ ../lib/$(DSONAME): $(OBJECTS)
+ 	echo $(DSOCOMMAND) $@ $(OBJECTS) -L../lib $(IMAGELIBS)
+-	$(DSOCOMMAND) $@ $(OBJECTS) $(LDLIBS)
++	$(DSOCOMMAND) $@ $(OBJECTS) $(LDLIBS) -lfontconfig -lXrender
+ 	$(RM) ../lib/$(DSOLINK)
+ 	$(LN) ../lib/$(DSONAME) ../lib/$(DSOLINK)
+ 
+--- fltk-2.0.x-r6525/images/Makefile.link	2011-01-21 15:34:59.000000000 +0100
++++ fltk-2.0.x-r6525/images/Makefile	2011-01-21 15:36:36.000000000 +0100
+@@ -109,7 +109,7 @@
+ 
+ ../lib/$(DSONAME): $(OBJECTS)
+ 	echo $(DSOCOMMAND) $@ ...
+-	$(DSOCOMMAND) $@ $(OBJECTS)
++	$(DSOCOMMAND) $@ $(OBJECTS) -L../lib/ -lfltk2 -lpng -ljpeg
+ 	$(RM) ../lib/$(DSOLINK)
+ 	$(LN) $(DSONAME) ../lib/$(DSOLINK)
+ 
+--- fltk-2.0.x-r7725/OpenGL/Makefile.link	2011-01-21 15:41:45.000000000 +0100
++++ fltk-2.0.x-r7725/OpenGL/Makefile	2011-01-21 15:42:53.000000000 +0100
+@@ -102,7 +102,7 @@
+ 
+ ../lib/$(DSONAME): $(OBJECTS)
+ 	echo $(DSOCOMMAND) $@ ...
+-	$(DSOCOMMAND) $@ $(OBJECTS)
++	$(DSOCOMMAND) $@ $(OBJECTS) -L../lib/ -lfltk2 -lGL -lfreetype -lm -lX11 -lXft
+ 	$(RM) ../lib/$(DSOLINK)
+ 	$(LN) $(DSONAME) ../lib/$(DSOLINK)
+ 
+--- fltk-2.0.x-r7725/glut/Makefile.link	2011-01-21 15:43:01.000000000 +0100
++++ fltk-2.0.x-r7725/glut/Makefile	2011-01-21 15:43:26.000000000 +0100
+@@ -103,7 +103,7 @@
+ 
+ ../lib/$(DSONAME): $(OBJECTS)
+ 	echo $(DSOCOMMAND) $@ ...
+-	$(DSOCOMMAND) $@ $(OBJECTS)
++	$(DSOCOMMAND) $@ $(OBJECTS) -L../lib/ -lfltk2 -lfltk2_gl -lglut -lGL
+ 	$(RM) ../lib/$(DSOLINK)
+ 	$(LN) $(DSONAME) ../lib/$(DSOLINK)
+ 
