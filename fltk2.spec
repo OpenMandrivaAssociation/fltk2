@@ -26,7 +26,7 @@ License:	LGPLv2+ with exceptions
 Source0:	http://ftp.easysw.com/pub/fltk/snapshots/%{distname}
 # Fix underlinking - AdamW 2008/12
 Patch1:		fltk2-6525-underlink.patch
-URL:		http://www.fltk.org
+URL:		https://www.fltk.org
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libx11-devel
 BuildRequires:	libxext-devel
