@@ -28,6 +28,10 @@ Source0:	http://ftp.easysw.com/pub/fltk/snapshots/%{distname}
 Patch1:		fltk2-6525-underlink.patch
 URL:		https://www.fltk.org
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	libx11-devel
 BuildRequires:	libxext-devel
 BuildRequires:	libxft-devel
