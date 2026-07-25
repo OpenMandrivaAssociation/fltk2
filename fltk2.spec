@@ -8,11 +8,11 @@
 %define rel	1
 
 %if %svn
-%define release		%mkrel 0.%{svn}.%{rel}
+%define release 0.%{svn}.%{rel}.1
 %define distname	%{fname}-%{fver}-r%{svn}.tar.bz2
 %define dirname		%{fname}-%{fver}-r%{svn}
 %else
-%define release		%mkrel %{rel}
+%define release %{rel}.1
 %define distname	%{fname}-%{version}.tar.bz2
 %define dirname		%{fname}-%{version}
 %endif
